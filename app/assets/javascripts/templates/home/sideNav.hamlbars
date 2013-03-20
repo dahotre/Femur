@@ -1,0 +1,5 @@
+%ul.nav.nav-list
+	%li
+		%a#postsLink{:href => '#posts'} Posts
+	%li
+		%a#_meLink{:href => '#_me'} _me

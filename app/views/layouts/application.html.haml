@@ -17,9 +17,11 @@
       .container
         .content
           .row
-            .span12
+            .span2#sideNavContainer
+            .span3#midNavContainer
+            .span7#bodyContainer
               = render 'layouts/messages'
-              / = yield
+              //= yield
           %footer
       / ! end of .container
     / ! end of #main
