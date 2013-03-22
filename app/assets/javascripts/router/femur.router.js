@@ -15,13 +15,13 @@ femur.Router = Backbone.Router.extend({
 	},
 	
 	showPost : function( id ) {
-		console.log('showing id : ' + id);
 		this.indexPost();
-		new femur.views.MainView( id, femur.collections.posts );
+		console.log('showing id:' + id);
+		femur.views.postId = id;
+		new femur.views.MainView( );
 	},
 	
 	showMe : function() {
-		console.log('showing me');
 		new femur.views.MidNavView();
 	},
 	

@@ -1,2 +1,2 @@
-%h1 Title
-%article Article begins..
+%h1 {{ post.title }}
+%article {{ post.article }}
