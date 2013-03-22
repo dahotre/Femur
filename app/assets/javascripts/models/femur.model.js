@@ -1,7 +1,7 @@
-femur.models.PostModel = Backbone.Model.extend( {
+PostModel = Backbone.Model.extend( {
 	
 } );
 
-femur.collection.PostModelList = Backbone.Collection.extend( {
+PostModelList = Backbone.Collection.extend( {
 	url : '/posts'
 } );

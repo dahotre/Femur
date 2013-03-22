@@ -1,15 +1,23 @@
 femur.views.MidNavView = Backbone.View.extend( {
 	el : '#midNavContainer',
 	
-	template : HandlebarsTemplates['midNav'],
+	listTemplate : HandlebarsTemplates['home/midNav'],
 	
-	initialize : function( posts ) {
-		this.collection = posts;
-		this.collection.on('reset', this.render, this);
+	meTemplate : HandlebarsTemplates['home/me'],
+	
+	initialize : function( data ) {
+		if ( data == null ) {
+			$(this.el).html( this.meTemplate() );
+		}
+		else if ( data instanceof PostModelList) {
+			this.collection = data;
+			this.collection.on('reset', this.render, this);
+			this.render();
+		}
 	},
 	
 	render : function() { 
-		$(this.el).html( this.template( {posts : this.collection.models } ) );
+		$(this.el).html( this.listTemplate( { posts: this.collection.toJSON() } ) );
 		return this;
 	}
 	

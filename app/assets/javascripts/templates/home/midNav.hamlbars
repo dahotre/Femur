@@ -1,0 +1,5 @@
+%ul.nav.nav-list
+	{{#each posts}}
+	%li
+		%a{ :href => '/#/posts/{{ this._id }}'}{{ this.title }}
+	{{/each}}

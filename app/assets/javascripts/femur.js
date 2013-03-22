@@ -1,14 +1,16 @@
 femur = {
 	models : {},
 	views : {},
-	collection : {},
+	collections : {},
 	routers : {}
 };
 
 $(function() {
 	
-	new femur.routers.router();
+	femur.routers.router = new femur.Router();
 	
-	// var posts = [ {url_title : '1_title', title : 'First title', body : 'This is the first title'},
-	 // {url_title : '2_title', title : 'Second title', body : 'This is the second title'} ];
+	new femur.views.SideNavView();
+	
+	Backbone.history.start();
+	
 });

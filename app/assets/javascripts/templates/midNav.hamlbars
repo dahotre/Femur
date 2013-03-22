@@ -1,4 +1,0 @@
-%ul.nav.nav-list
-	{{#each posts}}
-	%li {{ this.get 'title' }}
-	{{/each}}

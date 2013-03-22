@@ -1,25 +1,36 @@
-femur.routers.router = Backbone.Router.extend({
+femur.Router = Backbone.Router.extend({
 	routes : {
-		'' : 'home'
+		'' : 'home',
+		'posts/:id' : 'showPost',
+		'_me' : 'showMe',
+		'posts' : 'indexPost'
 	},
 	
 	initialize : function() {
-		new femur.views.SideNavView();
-		
-		Backbone.history.start( {pushState : true});
+		// add default routing behavior here
 	},
 	
 	home : function() {
-		console.log('At Home..');
-		
-		this.collection = new femur.collection.PostModelList();
-		this.collection.fetch();
-		
-		new femur.views.MidNavView( this.collection );
+		this.indexPost(); 
 	},
 	
 	showPost : function( id ) {
 		console.log('showing id : ' + id);
+		this.indexPost();
+		new femur.views.MainView( id, femur.collections.posts );
+	},
+	
+	showMe : function() {
+		console.log('showing me');
+		new femur.views.MidNavView();
+	},
+	
+	indexPost : function() {
+		if ( !femur.collections.posts) {
+			femur.collections.posts = new PostModelList();
+			femur.collections.posts.fetch();	
+		}
+		new femur.views.MidNavView( femur.collections.posts );
 	}
 	
 });
