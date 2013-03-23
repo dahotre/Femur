@@ -1,5 +1,5 @@
 %ul.nav.nav-list
-	{{#each posts}}
+	{{#each collection}}
 	%li
-		%a{ :href => '/#/posts/{{ this._id }}'}{{ this.title }}
+		%a{ :href => '/#/bookmarks/{{ this._id }}'}{{ this.title }}
 	{{/each}}

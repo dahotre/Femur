@@ -10,14 +10,27 @@ femur.views.MidNavView = Backbone.View.extend( {
 			$(this.el).html( this.meTemplate() );
 		}
 		else if ( data instanceof PostModelList) {
-			this.collection = data;
-			this.collection.on('reset', this.render, this);
-			this.render();
+			this.posts = data;
+			this.posts.on('reset', this.renderPosts, this);
+			this.renderPosts();
+		}
+		else if ( data instanceof BookmarkList) {
+			this.bookmarks = data;
+			this.bookmarks.on('reset', this.renderBookmarks, this);
+			this.renderBookmarks();
 		}
 	},
 	
-	render : function() { 
-		$(this.el).html( this.listTemplate( { posts: this.collection.toJSON() } ) );
+	renderPosts : function() {
+		this.render( this.posts );
+	},
+	
+	renderBookmarks : function() {
+		this.render( this.bookmarks );
+	},
+	
+	render : function( collection ) { 
+		$(this.el).html( this.listTemplate( { collection: collection.toJSON() } ) );
 		return this;
 	}
 	

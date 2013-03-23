@@ -5,3 +5,12 @@ PostModel = Backbone.Model.extend( {
 PostModelList = Backbone.Collection.extend( {
 	url : '/posts'
 } );
+
+
+BookmarkModel = Backbone.Model.extend( {
+	idAttribute: "_id"
+} );
+
+BookmarkList = Backbone.Collection.extend( {
+	url : '/bookmarks'
+} );

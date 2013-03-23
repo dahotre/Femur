@@ -2,4 +2,6 @@
 	%li
 		%a#postsLink{:href => '/#posts'} Posts
 	%li
+		%a#bookmarksLink{:href => '/#bookmarks'} Bookmarks
+	%li
 		%a#_meLink{:href => '/#_me'} _me
