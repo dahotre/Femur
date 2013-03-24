@@ -27,3 +27,6 @@ div {
    /* Non standard for webkit */
    word-break: break-word;
 }
+#sideNavContainer .nav-list>.active>a, #sideNavContainer .nav-list>.active>a:hover, #sideNavContainer .nav-list>.active>a:focus {
+background-color: lightSalmon;
+}
