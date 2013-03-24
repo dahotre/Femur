@@ -1,3 +1,13 @@
 @import "bootstrap";
-body { padding-top: 60px; }
+body { 
+  padding-top: 60px;
+  font-family: 'Muli', 'Helvetica Neue', Helvetics, arial, sans-serif; 
+}
 @import "bootstrap-responsive";
+a {
+  color: salmon;
+}
+.nav-list>.active>a, .nav-list>.active>a:hover, .nav-list>.active>a:focus {
+  background-color: lightSalmon;
+}
+
