@@ -77,5 +77,3 @@ pickle-email-*.html
 /config/application.yml
 
 .project
-
-Gemfile.lock
