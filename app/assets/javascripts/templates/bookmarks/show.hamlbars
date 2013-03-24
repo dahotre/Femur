@@ -1,6 +1,11 @@
-%h1 {{ bookmark.title }}
-%a {{ bookmark.url }}
-%div.currentTags
-	{{#each bookmark.tags}}
-	%span.badge.badge-inverse {{this}}
-	{{/each}}
+{{#each bookmarks}}
+%div.span2.eachBookmark
+	%h3 {{ this.title }}
+	%a{ :href => '{{ this.url }}', :target => '_blank' }{{ this.url }}
+	%div {{ this.note }}
+	%div.currentTags
+		{{#each this.tags}}
+		%span.badge.tagBadge
+			%a{ :href => '/#/bookmarks/tags/{{ this }}'}{{ this }}
+		{{/each}}
+{{/each}}

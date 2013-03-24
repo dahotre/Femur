@@ -1,7 +1,9 @@
 femur.views.MidNavView = Backbone.View.extend( {
 	el : '#midNavContainer',
 	
-	listTemplate : HandlebarsTemplates['home/midNav'],
+	postsTemplate : HandlebarsTemplates['posts/midNav'],
+	
+	bookmarksTemplate : HandlebarsTemplates['bookmarks/midNav'],
 	
 	meTemplate : HandlebarsTemplates['home/me'],
 	
@@ -22,15 +24,17 @@ femur.views.MidNavView = Backbone.View.extend( {
 	},
 	
 	renderPosts : function() {
-		this.render( this.posts );
+		$(this.el).html( this.postsTemplate( { collection: this.posts.toJSON() } ) );
+		return this;
 	},
 	
 	renderBookmarks : function() {
-		this.render( this.bookmarks );
-	},
-	
-	render : function( collection ) { 
-		$(this.el).html( this.listTemplate( { collection: collection.toJSON() } ) );
+		var bookmarkTags = [ ];
+		_.each(this.bookmarks.models, function( bookmark ) {
+			bookmarkTags.push( bookmark.get('tags'));			
+		});
+		bookmarkTags = _.uniq(_.flatten( bookmarkTags ));
+		$(this.el).html( this.bookmarksTemplate( { collection: bookmarkTags } ) );
 		return this;
 	}
 	

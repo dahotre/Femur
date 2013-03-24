@@ -1,5 +1,0 @@
-%ul.nav.nav-list
-	{{#each collection}}
-	%li
-		%a{ :href => '/#/bookmarks/{{ this._id }}'}{{ this.title }}
-	{{/each}}

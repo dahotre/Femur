@@ -12,7 +12,7 @@ class Bookmark
   private
     def parse_tags
       puts self.tags
-      self.tags = self.tags.split(',')
+      self.tags = self.tags.split(', ')
       puts self.tags
     end
 end

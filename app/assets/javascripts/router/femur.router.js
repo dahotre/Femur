@@ -4,8 +4,8 @@ femur.Router = Backbone.Router.extend({
 		'_me' : 'showMe',
 		'posts/:id' : 'showPost',
 		'posts' : 'indexPost',
-		'bookmarks/:id' : 'showBookmark',
-		'bookmarks' : 'indexBookmark'
+		'bookmarks' : 'indexBookmark',
+		'bookmarks/tags/:tag' : 'showBookmarks'
 	},
 	
 	initialize : function() {
@@ -35,12 +35,12 @@ femur.Router = Backbone.Router.extend({
 		new femur.views.MidNavView( femur.collections.posts );
 	},
 	
-	showBookmark : function( id ) {
-		this.indexBookmark();
-		console.log('showing bm id:' + id);
-		femur.views.bookmarkId = id;
-		new femur.views.MainBookmarksView();
-	},
+	// showBookmark : function( id ) {
+		// this.indexBookmark();
+		// console.log('showing bm id:' + id);
+		// //femur.views.bookmarkId = id;
+		// new femur.views.MainBookmarksView();
+	// },
 	
 	indexBookmark : function() {
 		if ( !femur.collections.bookmarks ) {
@@ -48,6 +48,14 @@ femur.Router = Backbone.Router.extend({
 			femur.collections.bookmarks.fetch();	
 		}
 		new femur.views.MidNavView( femur.collections.bookmarks );
+		femur.views.tag = null;
+		new femur.views.MainBookmarksView();
+	},
+	
+	showBookmarks : function( tag ) {
+		this.indexBookmark();
+		femur.views.tag = tag;
+		new femur.views.MainBookmarksView();
 	}
 	
 });

@@ -1,0 +1,4 @@
+{{#each collection}}
+%span.badge.tagBadge
+	%a{ :href => '/#/bookmarks/tags/{{ this }}'}{{ this }}
+{{/each}}
