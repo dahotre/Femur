@@ -13,7 +13,7 @@ femur.Router = Backbone.Router.extend({
 	},
 	
 	home : function() {
-		this.indexPost(); 
+		this.indexBookmark(); 
 	},
 	
 	showMe : function() {

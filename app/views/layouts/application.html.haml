@@ -19,10 +19,10 @@
           .row
             .span2#sideNavContainer
             .span2#midNavContainer
-            .span8#bodyContainer
+            .span8#mainContainer
               = render 'layouts/messages'
-              #directOP
-                = yield
+              = yield
+              #bodyContainer
           %footer
       / ! end of .container
     / ! end of #main
