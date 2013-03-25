@@ -9,8 +9,14 @@ femur.views.MainView = Backbone.View.extend( {
 		this.render();
 	},
 	
-	render : function() { 
-		var p = _.findWhere( femur.collections.posts.toJSON(), {_id : femur.views.postId });
+	render : function() {
+		var p = null; 
+		if (femur.views.postId == null ) {
+			p = _.first( femur.collections.posts.toJSON());
+		}
+		else {
+			p = _.findWhere( femur.collections.posts.toJSON(), {_id : femur.views.postId });
+		}
 		$(this.el).html( this.postTemplate( {post :  p}) );
 		return this;
 	}

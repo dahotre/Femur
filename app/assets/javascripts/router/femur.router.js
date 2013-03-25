@@ -21,18 +21,21 @@ femur.Router = Backbone.Router.extend({
 	},
 	
 	showPost : function( id ) {
-		this.indexPost();
-		console.log('showing id:' + id);
-		femur.views.postId = id;
-		new femur.views.MainView( );
+		this.managePosts( id );
 	},
 	
 	indexPost : function() {
+		this.managePosts();
+	},
+	
+	managePosts : function( postId ) {
 		if ( !femur.collections.posts) {
 			femur.collections.posts = new PostModelList();
 			femur.collections.posts.fetch();	
 		}
 		new femur.views.MidNavView( femur.collections.posts );
+		femur.views.postId = postId;
+		new femur.views.MainView( );
 	},
 	
 	// showBookmark : function( id ) {
