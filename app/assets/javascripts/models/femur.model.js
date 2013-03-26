@@ -12,5 +12,6 @@ BookmarkModel = Backbone.Model.extend( {
 } );
 
 BookmarkList = Backbone.Collection.extend( {
+	model : BookmarkModel,
 	url : '/bookmarks'
 } );

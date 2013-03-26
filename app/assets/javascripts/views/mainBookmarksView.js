@@ -3,6 +3,11 @@ femur.views.MainBookmarksView = Backbone.View.extend( {
 	
 	template : HandlebarsTemplates['bookmarks/show'],
 	
+	events : {
+		'submit #bookmarkForm' : 'addBookmark',
+		'click #inputUrl' : 'displayForm'
+	},
+	
 	initialize : function() {
 		femur.collections.bookmarks.on('reset', this.render, this);
 		this.render();
@@ -28,6 +33,24 @@ femur.views.MainBookmarksView = Backbone.View.extend( {
 		}
 		$(this.el).html( this.template( {bookmarks :  collection }) );
 		return this;
+	},
+	
+	addBookmark : function(e) {
+		e.preventDefault();
+		console.log('submit form');
+        
+        femur.collections.bookmarks.create(	{
+        	url: this.$('#inputUrl').val(),
+        	title: this.$('#inputTitle').val(),
+        	notes: this.$('#inputNotes').val(),
+        	tags: this.$('#inputTags').val()
+		} );
+ 
+        Backbone.history.navigate('#bookmarks', true);
+	},
+	
+	displayForm : function() {
+		$('.fieldsToShow').show('slow');
 	}
 	
 } );

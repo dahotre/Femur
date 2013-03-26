@@ -1,11 +1,35 @@
-{{#each bookmarks}}
-%div.span2.eachBookmark
-	%h3 {{ this.title }}
-	%a{ :href => '{{ this.url }}', :target => '_blank' }{{ this.url }}
-	%div {{ this.note }}
-	%div.currentTags
-		{{#each this.tags}}
-		%span.badge.tagBadge
-			%a{ :href => '/#/bookmarks/tags/{{ this }}'}{{ this }}
-		{{/each}}
-{{/each}}
+.row
+	{{#each bookmarks}}
+	%div.span2.eachBookmark
+		%h3 {{ this.title }}
+		%a{ :href => '{{ this.url }}', :target => '_blank' }{{ this.url }}
+		%div {{ this.note }}
+		%div.currentTags
+			{{#each this.tags}}
+			%span.badge.tagBadge
+				%a{ :href => '/#/bookmarks/tags/{{ this }}'}{{ this }}
+			{{/each}}
+	{{/each}}
+%hr
+
+.row#bookmarkFormRow
+	%form.form-horizontal#bookmarkForm
+		.control-group
+			%label.control-label{ :for => 'inputUrl' } Add bookmark
+			.controls
+				%input#inputUrl{ :type => 'text', :placeholder => 'URL', :name => 'bookmark[url]'}
+		.control-group.fieldsToShow
+			%label.control-label{ :for => 'inputTitle' } Title
+			.controls
+				%input#inputTitle{ :type => 'text', :placeholder => 'Title', :name => 'bookmark[title]'}
+		.control-group.fieldsToShow
+			%label.control-label{ :for => 'inputNotes' } Notes
+			.controls
+				%textarea#inputNotes{ :placeholder => 'Notes', :name => 'bookmark[notes]' }
+		.control-group.fieldsToShow
+			%label.control-label{ :for => 'inputTags' } Tags
+			.controls
+				%input#inputTags{ :type => 'text', :placeholder => 'foo, bar', :name => 'bookmark[tags]' }
+		.control-group.fieldsToShow
+			.controls
+				%button.btn.btn-inverse{ :type => 'submit' } Add Bookmark
